@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>城市合伙人-管理中心</title>
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+
+    <link href="./static/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link rel="stylesheet" href="./static/bootstrap-table/src/bootstrap-table.css">
+    <link href="./static/css/font-awesome.css" rel="stylesheet">
+    <link href="./static/css/animate.css" rel="stylesheet">
+    <link href="./static/css/style.css?v=4.1.0" rel="stylesheet">
+
+    <link rel="stylesheet" href="./src/css/adminCenter.css">
+    <link rel="stylesheet" href="./src/css/index.css">
+
+    <!-- <style>
+        /* .container-fluid {
+            padding: 0;
+        } */
+
+        .shopDetail {
+            margin-top: 40px;
+            width: 100%;
+        }
+
+        .gray-bg {
+            height: 300px;
+            background-color: #f3f3f4;
+        }
+
+        .up,
+        .down {
+            width: 20px;
+            display: inline-block;
+            margin: 0 3px;
+        }
+
+        .body .breadcrumb {
+            border: 0;
+            margin-bottom: 0;
+            font-size: 20px;
+        }
+
+        .breadcrumb li,
+        .breadcrumb a {
+            color: #3b5279;
+        }
+
+        .circle {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #3b5279;
+            margin-right: 10px;
+        }
+
+        .panel-body {
+            padding: 10px;
+        }
+
+        .panel>.panel-body+.table {
+            border-top: 2px solid #3b5279;
+        }
+
+        .table {
+            text-align: center;
+        }
+        /* .table tr th {
+            
+            
+        } */
+
+        .table-bordered>thead>tr>th {
+            font-size: 20px;
+            /* font-weight: 400;
+             */
+            color: #333;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .table tr {
+            margin: 8px 0;
+        }
+
+        .table>tbody>tr>td {
+            font-size: 16px;
+            color: #666;
+            padding: 12px;
+        }
+
+        .table>tbody .recommend {
+            color: #d04424;
+            margin-right: 20px;
+        }
+
+        .table>tbody .closed {
+            color: #c89355;
+            margin-right: 20px;
+        }
+
+        .table>tbody .details {
+            color: #3b5279;
+        }
+
+        .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+            background-color: #3b5279;
+            border-color: #3b5279;
+            color: #fff;
+        }
+    </style> -->
+
+    <!--兼容H5标签与媒体查询-->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+    <div class="shopDetail">
+        <div class="container-fluid">
+            <div class="body user-list">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form action="" class="form-inline">
+                            <ol class="breadcrumb">
+                                <span class="circle"></span>
+                                <li>
+                                    <a href="javascript:;">店铺</a>
+                                </li>
+                                <li>全部店铺</li>
+                            </ol>
+                        </form>
+                    </div>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>店铺名称</th>
+                                <th>联系方式</th>
+                                <th>排序</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="shopList">
+                            <!--<tr>-->
+                                <!--<td>001</td>-->
+                                <!--<td>黑果冻的店</td>-->
+                                <!--<td>12345678900</td>-->
+                                <!--<td>-->
+                                    <!--<img class="up" src="./images/up.png" alt="">-->
+                                    <!--<img class="down" src="./images/down.png" alt="">-->
+                                <!--</td>-->
+
+                                <!--<td>-->
+                                    <!--<span class="recommend">设为推荐</span>-->
+                                    <!--<span class="closed">关闭店铺</span>-->
+                                    <!--<span class="details">查看详情</span>-->
+                                <!--</td>-->
+
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>002</td>-->
+                                <!--<td>黑果冻的店</td>-->
+                                <!--<td>12345678900</td>-->
+                                <!--<td>-->
+                                    <!--<img class="up" src="./images/up.png" alt="">-->
+                                    <!--<img class="down" src="./images/down.png" alt="">-->
+                                <!--</td>-->
+
+                                <!--<td>-->
+                                    <!--<span class="recommend">设为推荐</span>-->
+                                    <!--<span class="closed">关闭店铺</span>-->
+                                    <!--<span class="details">查看详情</span>-->
+                                <!--</td>-->
+
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>003</td>-->
+                                <!--<td>黑果冻的店</td>-->
+                                <!--<td>12345678900</td>-->
+                                <!--<td>-->
+                                    <!--<img class="up" src="./images/up.png" alt="">-->
+                                    <!--<img class="down" src="./images/down.png" alt="">-->
+                                <!--</td>-->
+
+                                <!--<td>-->
+                                    <!--<span class="recommend">设为推荐</span>-->
+                                    <!--<span class="closed">关闭店铺</span>-->
+                                    <!--<span class="details">查看详情</span>-->
+                                <!--</td>-->
+
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>004</td>-->
+                                <!--<td>黑果冻的店</td>-->
+                                <!--<td>12345678900</td>-->
+                                <!--<td>-->
+                                    <!--<img class="up" src="./images/up.png" alt="">-->
+                                    <!--<img class="down" src="./images/down.png" alt="">-->
+                                <!--</td>-->
+
+                                <!--<td>-->
+                                    <!--<span class="recommend">设为推荐</span>-->
+                                    <!--<span class="closed">关闭店铺</span>-->
+                                    <!--<span class="details">查看详情</span>-->
+                                <!--</td>-->
+
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>005</td>-->
+                                <!--<td>黑果冻的店</td>-->
+                                <!--<td>12345678900</td>-->
+                                <!--<td>-->
+                                    <!--<img class="up" src="./images/up.png" alt="">-->
+                                    <!--<img class="down" src="./images/down.png" alt="">-->
+                                <!--</td>-->
+
+                                <!--<td>-->
+                                    <!--<span class="recommend">设为推荐</span>-->
+                                    <!--<span class="closed">关闭店铺</span>-->
+                                    <!--<span class="details">查看详情</span>-->
+                                <!--</td>-->
+
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>006</td>-->
+                                <!--<td>黑果冻的店</td>-->
+                                <!--<td>12345678900</td>-->
+                                <!--<td>-->
+                                    <!--<img class="up" src="./images/up.png" alt="">-->
+                                    <!--<img class="down" src="./images/down.png" alt="">-->
+                                <!--</td>-->
+
+                                <!--<td>-->
+                                    <!--<span class="recommend">设为推荐</span>-->
+                                    <!--<span class="closed">关闭店铺</span>-->
+                                    <!--<span class="details">查看详情</span>-->
+                                <!--</td>-->
+
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>007</td>-->
+                                <!--<td>黑果冻的店</td>-->
+                                <!--<td>12345678900</td>-->
+                                <!--<td>-->
+                                    <!--<img class="up" src="./images/up.png" alt="">-->
+                                    <!--<img class="down" src="./images/down.png" alt="">-->
+                                <!--</td>-->
+
+                                <!--<td>-->
+                                    <!--<span class="recommend">设为推荐</span>-->
+                                    <!--<span class="closed">关闭店铺</span>-->
+                                    <!--<span class="details">查看详情</span>-->
+                                <!--</td>-->
+
+                            <!--</tr>-->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="dataTables_paginate paging_simple_numbers pull-right" id="DataTables_Table_0_paginate">
+                    <ul class="pagination">
+                        <li class="paginate_button previous disabled" aria-controls="DataTables_Table_0" tabindex="0" id="DataTables_Table_0_previous">
+                            <a href="#">上一页</a>
+                        </li>
+                        <li class="paginate_button active" aria-controls="DataTables_Table_0" tabindex="0">
+                            <a href="#">1</a>
+                        </li>
+                        <li class="paginate_button " aria-controls="DataTables_Table_0" tabindex="0">
+                            <a href="#">2</a>
+                        </li>
+                        <li class="paginate_button " aria-controls="DataTables_Table_0" tabindex="0">
+                            <a href="#">3</a>
+                        </li>
+                        <li class="paginate_button " aria-controls="DataTables_Table_0" tabindex="0">
+                            <a href="#">4</a>
+                        </li>
+                        <li class="paginate_button " aria-controls="DataTables_Table_0" tabindex="0">
+                            <a href="#">5</a>
+                        </li>
+                        <li class="paginate_button " aria-controls="DataTables_Table_0" tabindex="0">
+                            <a href="#">6</a>
+                        </li>
+                        <li class="paginate_button next" aria-controls="DataTables_Table_0" tabindex="0" id="DataTables_Table_0_next">
+                            <a href="#">下一页</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--店铺列表模板-->
+    <script type="text/template" id="myShopList">
+        {{each data}}
+        <tr>
+            <td>{{$index+1}}</td>
+            <td>{{$value.shopName}}</td>
+            <td>{{$value.shopTel}}</td>
+            <td>
+                <img class="up" src="./images/up.png" alt="">
+                <img class="down" src="./images/down.png" alt="">
+            </td>
+
+            <td>
+                <span class="recommend">设为推荐</span>
+                <span class="closed">关闭店铺</span>
+                <span class="details">查看详情</span>
+            </td>
+
+        </tr>
+        {{/each}}
+    </script>
+
+    <!-- 全局js -->
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/jquery.cookie.js"></script>
+    <script src="./static/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="./static/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="./static/bootstrap-table/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="./static/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="./static/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="./static/js/plugins/layer/layer.min.js"></script>
+
+    <!-- 第三方插件 -->
+    <script src="./static/js/plugins/pace/pace.min.js"></script>
+    <script src="./js/template-web.js"></script>
+
+    <!-- 自定义js -->
+    <script src="./static/js/hplus.js?v=4.1.0"></script>
+    <script type="text/javascript" src="./static/js/contabs.js"></script>
+    <script src="./src/admin-center.js"></script>
+
+</body>
+
+</html>

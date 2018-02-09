@@ -1,0 +1,21 @@
+<!--店铺列表模板-->
+<!--<script type="text/template" id="myShopList">-->
+    {{each data}}
+    <tr>
+        <td>{{$index+1}}</td>
+        <td>{{$value.shopName}}</td>
+        <td>{{$value.shopTel}}</td>
+        <td>
+            <img class="up" src="./images/up.png" alt="">
+            <img class="down" src="./images/down.png" alt="">
+        </td>
+
+        <td>
+            <span class="recommend">设为推荐</span>
+            <span class="closed">关闭店铺</span>
+            <span class="details">查看详情</span>
+        </td>
+
+    </tr>
+    {{/each}}
+<!--</script>-->

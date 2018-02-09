@@ -1,0 +1,197 @@
+@import "setting";
+
+header {
+  width: 100%;
+  height: 214px;
+  background: linear-gradient(to right,@blueColor,@grayBlue);
+  padding: 30px 100px 0;
+
+  h1 {
+    color: @font-white;
+    margin-bottom: 50px;
+  }
+
+  .city,.market {
+    display: inline-block;
+  }
+
+  .city {
+    margin-right: 120px;
+  }
+
+  .freshen {
+    span {
+      font-size: 20px;
+    }
+    
+  }
+
+  .search {
+    position: relative;
+    float: right;
+    width: 400px;
+    height: 50px;
+    background-color: red;
+    border-radius: 0 5px 5px 0;
+    font-size: 20px;
+
+    input {
+      width: 300px;
+      height: 50px;
+    }
+    button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100px;
+      height: 50px;
+      background: @deepBlue url("../images/search.png") no-repeat 15px 15px;
+      border-radius: 0 5px 5px 0;
+      color: @font-white;
+      //font-size: 20px;
+      padding-left: 33px;
+    }
+  }
+
+  label {
+    font-size: 28px;
+    color: @font-white;
+    font-weight: 400;
+  }
+
+  .selectCity {
+    //width: 150px;
+    height: 50px;
+    border: 1px solid @font-white;
+    border-radius: 5px;
+    background: rgba(255,255,255,0);
+    font-size: 22px;
+    color: @font-white;
+    margin-right: 20px;
+    padding: 0 15px 0 25px;
+  }
+
+  //古玩城下拉菜单
+  #curio {
+    option {
+      background-color: #7287a8;
+    }
+  }
+}
+
+#wrapper {
+  .navbar-static-side {
+    background-color: @asideColor;
+  }
+
+  #side-menu {
+    font-size: 28px;
+    margin-top: 88px;
+
+    .nav-label {
+      color: @colorddd;
+      font-weight: 400;
+    }
+
+    > li.active {
+      // border-left: 4px solid #19aa8d;
+      background: @activebg;
+  }
+
+    .nav-second-level .J_menuItem{
+      color: @font-white;
+      font-size: 22px;
+      font-weight: 400;
+    }
+  }
+}
+
+#page-wrapper {
+  background-color: @font-white;
+
+  .content-tabs {
+    margin: 0 70px;
+    border-bottom: 0;
+    height: 72px;
+    background-color: @deepBlue;
+  }
+
+  #addressCity {
+    margin: 18px 0 0 40px;
+
+    > li {
+      float: left;
+      font-size: 22px;
+      color: @font-white;
+    }
+  }
+}
+
+#content-main {
+  margin: 0 70px; 
+}
+
+
+  .up,
+  .down {
+    width: 20px;
+    display: inline-block;
+    margin: 0 3px;
+  }
+
+  .body .breadcrumb {
+    border: 0;
+    margin-bottom: 0;
+    font-size: 20px;
+  }
+
+  .breadcrumb li,
+  .breadcrumb a {
+    color: #3b5279;
+  }
+
+  .circle {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #3b5279;
+    margin-right: 10px;
+  }
+
+  .panel-body {
+    padding: 10px;
+  }
+
+  .panel>.panel-body+.table {
+    border-top: 2px solid #3b5279;
+  }
+
+  .table tr th {
+    font-size: 20px;
+    color: #333;
+  }
+
+  .table tr {
+    margin: 8px 0;
+  }
+
+  .table>tbody>tr>td {
+    font-size: 16px;
+    color: #666;
+    padding: 12px;
+  }
+
+  .table>tbody .recommend {
+    color: #d04424;
+    margin-right: 20px;
+  }
+
+  .table>tbody .closed {
+    color: #c89355;
+    margin-right: 20px;
+  } 
+
+  .table>tbody .details {
+    color: #3b5279;
+  }

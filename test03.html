@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="./js/jquery.min.js"></script>
+<script>
+    var Authorization = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5NTgyNTgyMDgyMTA4MDg4MzIiLCJleHAiOjE1MTg2NjYwOTB9.Esc1QJIH9oUolXqj9enpjiICjkpV_ROn4nbuJH1LZLmbjo0-WXlVUETM44h6zas_f6YTI5h_sytCuIGp2QHiPA';
+    var cityId = 182272;
+    var curiocityId = 854582180205912064;
+//    var data="curiocityId="+curiocityId;
+
+//    $(document).ajaxSend(function (event, xhr) {
+//        xhr.setRequestHeader("Content-Type", "application/json;charset=utf-8") ;
+//        xhr.setRequestHeader("Authorization", Authorization) ;
+//        xhr.setRequestHeader("cityId", cityId);
+//        xhr.setRequestHeader("city", 'city');
+//    });
+
+    $.ajax({
+//        url:"http://120.27.226.156:8080/roo-mobile-web/partner/shop/page?"+data,
+        url: "http://192.168.3.5:8090/partner/shop/page?curiocityId="+854582180205912064,
+        type:"get",
+//         data: {},
+        dataType:'JSON',
+//        contentType: "application/json;charset=utf-8",
+//        dataType:"JSON",
+        // jsonp: 'jsoncallback',
+        //要传递的参数,没有传参时，也一定要写上
+//         data: null,
+        beforeSend: function(jqXHR){
+            jqXHR.setRequestHeader("Authorization", Authorization);
+            jqXHR.setRequestHeader("cityId", cityId);
+        },
+
+        success:function(info){
+            console.log(info,"古玩城下店铺");
+            console.log(getheader('cityId'));
+        },
+        error: function (jqXHR,textStatus,errorThrown) {
+            console.log(jqXHR,'返回jqXHR');
+            console.log(textStatus,'返回的状态textStatus');
+            console.log(errorThrown,'返回服务器的错误信息errorThrown');
+            console.log(jqXHR.readyState,'返回当前状态');
+            console.log(jqXHR.status,'返回状态码');
+            console.log(jqXHR.statusText ,'返回状态码错误信息');
+            console.log(jqXHR.responseText  ,'返回服务器响应返回的文本信息');
+        },
+//        headers: {
+//            'Authorization': Authorization,
+//            'cityId': cityId,
+//        },
+    })
+</script>
+</body>
+</html>

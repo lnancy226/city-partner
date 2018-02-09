@@ -1,0 +1,68 @@
+//引入全局配置
+//@import "bootstrap";
+@import "setting";
+
+body {
+  background: url("../images/login_bg.png") no-repeat;
+  background-size:100%;
+}
+/*登录*/
+#login {
+  position: absolute;
+  right: 325px;
+  top: 290px;
+  width: 450px;
+  height: 350px;
+  border-radius: 10px;
+  background-color: rgba(255,255,255,0.8);
+  /*background-color: #fff;*/
+  /*opacity: 0.8;*/
+
+  h2 {
+    font-weight: 500;
+    text-align: center;
+    margin-top: 58px;
+    margin-bottom: 35px;
+  }
+
+  input {
+    display: block;
+    width: 300px;
+    height: 50px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    margin-left: 75px;
+    background-color: rgba(255,255,255,0);
+  }
+
+  /*修改placeholder字体的css样式*/
+  ::-webkit-input-placeholder{
+    font-size: 20px;
+  }
+
+  #ma{
+    display: inline-block;
+    margin-top: 30px;
+    margin-right: 5px;
+    width: 160px;
+  }
+
+  #getMa {
+    display: inline-block;
+    width: 130px;
+    height: 50px;
+    background-color: @mainColor;
+    border-radius: 5px;
+    cursor:pointer;
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 18px;
+  }
+
+  >a {
+    position: absolute;
+    right: 75px;
+    font-size: 20px;
+    color: @orangeA;
+  }
+}
