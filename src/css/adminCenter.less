@@ -241,6 +241,9 @@ header {
     border-color: #3b5279;
     color: #fff;
 }
+  .operate span {
+    cursor: pointer;
+  }
 }
 
 #apply {
@@ -282,3 +285,65 @@ header {
   }
   
 }
+
+//店铺详情
+#shopDetail{
+  .panel-body {
+    border-bottom: 2px solid #3b5279;
+  }
+  .content{
+    margin-top: 50px;
+    margin-left: 60px;
+    overflow: hidden;
+
+    .content-left {
+      margin-right: 185px;
+    }
+
+    p {
+      font-size: 24px;
+      color: #4e4e4e;
+    }
+    .door-pic {
+      width: 350px;
+      height: 160px;
+      background-color: #3b5279;
+      margin-bottom: 30px;
+      overflow: hidden;
+      img {
+        width: 350px;
+        height: auto;
+      }
+    }
+  }
+
+  .site-pic {
+    width: 350px;
+      li {
+        width: 106px;
+        height: 106px;
+        background-color: #3b5279;
+        float: left;
+        margin-right: 10px;
+        margin-bottom: 10px;
+
+        //&:nth-child(3n){
+        //  margin-right: 0;
+        //}
+    }
+  }
+
+  .content-right {
+    font-size: 20px;
+    color: #333;
+
+    li {
+      line-height: 45px;
+    }
+
+    .shop-name {
+      font-size: 26px;
+    }
+  }
+}
+

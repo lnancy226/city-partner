@@ -218,6 +218,9 @@ header #curio option {
   border-color: #3b5279;
   color: #fff;
 }
+.shopDetail .operate span {
+  cursor: pointer;
+}
 #apply {
   margin: 30px 0 0 60px;
 }
@@ -248,4 +251,51 @@ header #curio option {
   height: 50px;
   border-radius: 5px;
   font-size: 20px;
+}
+#shopDetail .panel-body {
+  border-bottom: 2px solid #3b5279;
+}
+#shopDetail .content {
+  margin-top: 50px;
+  margin-left: 60px;
+  overflow: hidden;
+}
+#shopDetail .content .content-left {
+  margin-right: 185px;
+}
+#shopDetail .content p {
+  font-size: 24px;
+  color: #4e4e4e;
+}
+#shopDetail .content .door-pic {
+  width: 350px;
+  height: 160px;
+  background-color: #3b5279;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+#shopDetail .content .door-pic img {
+  width: 350px;
+  height: auto;
+}
+#shopDetail .site-pic {
+  width: 350px;
+}
+#shopDetail .site-pic li {
+  width: 106px;
+  height: 106px;
+  background-color: #3b5279;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+#shopDetail .content-right {
+  font-size: 20px;
+  color: #333;
+}
+#shopDetail .content-right li {
+  line-height: 45px;
+}
+#shopDetail .content-right .shop-name {
+  font-size: 26px;
 }
