@@ -146,13 +146,32 @@
                     <!--<option value="0">吴山古玩城</option>-->
                 </select>
             </div>
-            <div class="search">
-                <input type="text">
-                <button>搜索</button>
-            </div>
+            <!--搜索-->
+            <!--<div class="search">-->
+                <!--<input type="text">-->
+                <!--<button>搜索</button>-->
+            <!--</div>-->
         </div>
     </form>
 </header>
+<!--空白-->
+<div class="row border-bottom">
+    <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0;background-color: #fff">
+    </nav>
+</div>
+<!--地址面包屑导航-->
+<div class="row content-tabs">
+    <ul id="addressCity">
+        <li class="province" id="province">河南省<span>-</span></li>
+        <li class="city" id="city">郑州市<span>-</span></li>
+        <li class="market" id="market">河南博物馆</li>
+    </ul>
+    <div class="freshen pull-right">
+        <img src="./images/freshen.png" alt="">
+        <span>刷新</span>
+    </div>
+</div>
+
 <div class="shopDetail">
     <div class="container-fluid">
         <div class="body user-list" id="shops">
@@ -186,32 +205,32 @@
 
             <div class="dataTables_paginate paging_simple_numbers pull-right" id="DataTables_Table_0_paginate">
                 <ul class="pagination">
-                    <li class="paginate_button previous disabled" aria-controls="DataTables_Table_0" tabindex="0"
-                        id="DataTables_Table_0_previous">
-                        <a href="#">上一页</a>
-                    </li>
-                    <li class="paginate_button active" aria-controls="DataTables_Table_0" tabindex="0">
-                        <a href="#">1</a>
-                    </li>
-                    <li class="paginate_button " aria-controls="DataTables_Table_0" tabindex="0">
-                        <a href="#">2</a>
-                    </li>
-                    <li class="paginate_button " aria-controls="DataTables_Table_0" tabindex="0">
-                        <a href="#">3</a>
-                    </li>
-                    <li class="paginate_button " aria-controls="DataTables_Table_0" tabindex="0">
-                        <a href="#">4</a>
-                    </li>
-                    <li class="paginate_button " aria-controls="DataTables_Table_0" tabindex="0">
-                        <a href="#">5</a>
-                    </li>
-                    <li class="paginate_button " aria-controls="DataTables_Table_0" tabindex="0">
-                        <a href="#">6</a>
-                    </li>
-                    <li class="paginate_button next" aria-controls="DataTables_Table_0" tabindex="0"
-                        id="DataTables_Table_0_next">
-                        <a href="#">下一页</a>
-                    </li>
+                    <!--<li class="paginate_button previous disabled" aria-controls="DataTables_Table_0" tabindex="0"-->
+                        <!--id="DataTables_Table_0_previous">-->
+                        <!--<a href="#">上一页</a>-->
+                    <!--</li>-->
+                    <!--<li class="paginate_button active" aria-controls="DataTables_Table_0" tabindex="0">-->
+                        <!--<a href="#">1</a>-->
+                    <!--</li>-->
+                    <!--<li class="paginate_button " aria-controls="DataTables_Table_0" tabindex="0">-->
+                        <!--<a href="#">2</a>-->
+                    <!--</li>-->
+                    <!--<li class="paginate_button " aria-controls="DataTables_Table_0" tabindex="0">-->
+                        <!--<a href="#">3</a>-->
+                    <!--</li>-->
+                    <!--<li class="paginate_button " aria-controls="DataTables_Table_0" tabindex="0">-->
+                        <!--<a href="#">4</a>-->
+                    <!--</li>-->
+                    <!--<li class="paginate_button " aria-controls="DataTables_Table_0" tabindex="0">-->
+                        <!--<a href="#">5</a>-->
+                    <!--</li>-->
+                    <!--<li class="paginate_button " aria-controls="DataTables_Table_0" tabindex="0">-->
+                        <!--<a href="#">6</a>-->
+                    <!--</li>-->
+                    <!--<li class="paginate_button next" aria-controls="DataTables_Table_0" tabindex="0"-->
+                        <!--id="DataTables_Table_0_next">-->
+                        <!--<a href="#">下一页</a>-->
+                    <!--</li>-->
                 </ul>
             </div>
         </div>
@@ -225,7 +244,7 @@
                                 <a href="javascript:;">店铺</a>
                             </li>
                             <li>全部店铺</li>
-                            <li>小南的店</li>
+                            <li class="myShopName">小南的店</li>
                             <a class="back pull-right">返回上一级</a>
                         </ol>
                     </form>
@@ -269,8 +288,8 @@
         <p>店内环境：</p>
         <div class="site-pic">
             <ul>
-                {{each rooTagList}}
-                <li><img src="#" alt=""></li>
+                {{each rooFileList}}
+                <li><img src="{{$value.url}}" alt=""></li>
                 {{/each}}
             </ul>
             <img src="#" alt="">
@@ -285,9 +304,26 @@
             <li>地址：{{rooMember.areaInfo}}</li>
             <li>楼层：{{shopFloor}}</li>
             <li>门牌号：{{shopAddress}}</li>
-            <li>店铺简介：这是小南的店这是小南的店这是小南的店这是小南的店哈哈哈</li>
+            <li>店铺简介：{{remark}}</li>
         </ul>
     </div>
+</script>
+
+<!-- 分页模板 -->
+<script type="text/template" id="page">
+    <li class="paginate_button previous disabled" aria-controls="DataTables_Table_0" tabindex="0"
+        id="DataTables_Table_0_previous">
+        <a href="?pageNum=<%= pageNum-1 %>">上一页</a>
+    </li>
+    <% for(var i=1; i<=pageLen; i++) { %>
+    <li class="paginate_button <% if(i == pageNum) { %> active <% }%>" aria-controls="DataTables_Table_0" tabindex="0">
+        <a href="?pageNum=<%= i %>"><%= i %></a>
+    </li>
+    <% } %>
+    <li class="paginate_button next" aria-controls="DataTables_Table_0" tabindex="0"
+        id="DataTables_Table_0_next">
+        <a href="?pageNum=<%= pageNum-0+1 %>">下一页</a>
+    </li>
 </script>
 
 <!-- 全局js -->
@@ -308,6 +344,11 @@
 <script src="./static/js/hplus.js?v=4.1.0"></script>
 <script type="text/javascript" src="./static/js/contabs.js"></script>
 <script src="./src/admin-center.js"></script>
+
+<script>
+    // 店铺列表类型-推荐/全部
+    $.cookie('recommoned',0);
+</script>
 
 </body>
 

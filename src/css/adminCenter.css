@@ -111,32 +111,35 @@ header #curio option {
 #page-wrapper {
   background-color: #ffffff;
 }
-#page-wrapper .content-tabs {
-  margin: 0 70px;
+.content-tabs {
   border-bottom: 0;
   height: 72px;
   background-color: #3b5279;
 }
-#page-wrapper #addressCity {
+.content-tabs #addressCity {
   margin: 18px 0 0 40px;
 }
-#page-wrapper #addressCity > li {
+.content-tabs #addressCity > li {
   float: left;
   font-size: 22px;
   color: #ffffff;
 }
-#page-wrapper .freshen {
+.content-tabs .freshen {
   margin-right: 40px;
+  cursor: pointer;
 }
-#page-wrapper .freshen img {
-  margin-bottom: 8px;
+.content-tabs .freshen img {
+  display: inline-block;
+  width: 23px;
+  margin-bottom: 10px;
 }
-#page-wrapper .freshen span {
+.content-tabs .freshen span {
   font-size: 20px;
   color: #ffffff;
 }
 #content-main {
   margin: 0 70px;
+  height: 100%;
 }
 .gray-bg {
   background-color: #f3f3f4;
@@ -288,14 +291,80 @@ header #curio option {
   float: left;
   margin-right: 10px;
   margin-bottom: 10px;
+  overflow: hidden;
+}
+#shopDetail .site-pic li img {
+  height: 106px;
 }
 #shopDetail .content-right {
   font-size: 20px;
   color: #333;
+  width: 600px;
 }
 #shopDetail .content-right li {
   line-height: 45px;
 }
 #shopDetail .content-right .shop-name {
   font-size: 26px;
+}
+@media screen and (max-width: 1230px) {
+  header {
+    padding: 10px 20px;
+    height: auto;
+  }
+  header h1 {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+  header label {
+    font-size: 22px;
+  }
+  header .selectCity {
+    font-size: 20px;
+    height: 40px;
+    padding: 5px 10px;
+  }
+  header .city {
+    margin-right: 10px;
+    margin-bottom: 20px;
+  }
+  .content-tabs {
+    height: 60px;
+    line-height: 27px;
+  }
+  .content-tabs #addressCity > li {
+    font-size: 20px;
+  }
+  #shopDetail .content-right {
+    width: 50%;
+    font-size: 18px;
+  }
+  #shopDetail .content-right .shop-name {
+    font-size: 20px;
+  }
+  #shopDetail .content {
+    margin-left: 25px;
+  }
+  #shopDetail .content .content-left {
+    width: 50%;
+    margin-right: 0px;
+  }
+  #shopDetail .content p {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 1333px) {
+  #wrapper #side-menu {
+    font-size: 20px;
+  }
+  #wrapper #side-menu .nav-second-level .J_menuItem {
+    font-size: 18px;
+  }
+  body.fixed-sidebar .navbar-static-side,
+  body.canvas-menu .navbar-static-side {
+    width: 150px;
+  }
+  #page-wrapper {
+    margin: 0 0 0 150px;
+  }
 }

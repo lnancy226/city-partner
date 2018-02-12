@@ -7,11 +7,16 @@ $(function () {
     // var Authorization = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5NTgyNTgyMDgyMTA4MDg4MzIiLCJleHAiOjE1MTg2MDQ0NzN9.xbg-ePqBk7PFXgQOn0A0aju_weBLeU-ZZJtHO3qRHzr44CxbizpRCEFAvvUjPwBCVRmGEfav0tzBfmnBxlbA3Q';
     console.log(Authorization,'token');
     var cityId = $.cookie('cityId');
-    // var cityId = 182272;
+    // 店铺列表类型-推荐/全部
+    // console.log(recommend,"recommend");
 
     // 目标城市
     $('.selectedP').text($.cookie('province'));
     $('.selectedC').text($.cookie('city'));
+    // 面包屑导航
+    $('#province').html($.cookie('province')+"<span>-</span>");
+    $('#city').html($.cookie('city')+"<span>-</span>");
+
     // 获取古玩城
     getAntique();
     // 获取古玩城
@@ -33,6 +38,7 @@ $(function () {
                 console.log(info,"古玩城");
                 // var curioId = $('#curio').find("option:selected").val();
                 var curioId = info.data[0].id;
+                var curiocityName = info.data[0].curiocityName;
                 // console.log(curioId,'古玩城Id');
                 $.each(info.data,function(index,value){
                     $("#curio").append("<option value=" + value.id + ">" + value.curiocityName + "</option>");
@@ -41,11 +47,14 @@ $(function () {
                 // 古玩城更改时获取相应店铺数据
                 $("#curio").change(function () {
                     curioId = $(this).find("option:selected").val();
+                    curiocityName = $(this).find("option:selected").text();
+                    $('#market').html(curiocityName);
                     // console.log(curioId,'古玩城id222');
                     // $("#shopList").remove();
                     requestShopData(curioId);
                 });
 
+                $('#market').html(curiocityName);
             }
         })
     };
@@ -53,7 +62,26 @@ $(function () {
     // 获取古玩城下店铺列表
     function requestShopData(curiocityId){
         var curiocityId = curiocityId;
-        var data="curiocityId="+curiocityId;
+        var recommoned =  $.cookie('recommoned');
+        // 利用正则匹配页码
+        var reg = /\d+/g;
+        // 处理请求参数
+        var search = location.search;
+        // console.log(search,"url地址");
+        // 进行匹配查找
+        if (search == "") {
+            var pageNum = 1;
+        }else {
+            var pageNum =  reg.exec(search)[0];
+        };
+        console.log(pageNum,"页码");
+        var pageSize = 7;
+        if(recommoned == 1){
+            var data="curiocityId="+curiocityId+"&pageSize="+pageSize+"&pageNum="+pageNum+"&recommoned="+recommoned;
+        };
+        if(recommoned == 0){
+            var data="curiocityId="+curiocityId+"&pageSize="+pageSize+"&pageNum="+pageNum;
+        };
         $.ajax({
             url: "http://120.27.226.156:8080/roo-mobile-web/partner/shop/page?"+data,
             type: "GET",
@@ -73,6 +101,16 @@ $(function () {
                 // 调用模板引擎处理店铺列表
                 var shopsHtml = template("myShopList",info);
                 $("#shopList").html(shopsHtml);
+                // 总的页数
+                var pageLen = info.pages;
+                // 调用模板引擎处理分页
+                var pagehtml = template('page', {
+                    pageLen: pageLen,
+                    pageNum: pageNum
+                });
+
+                $(".pagination").html(pagehtml);
+
 
                 $.each(info.data,function(index,value){
                     if(value.recommoned == 0){
@@ -179,10 +217,39 @@ $(function () {
                 console.log(info,"店铺详情");
                 $('#shops').css('display','none');
                 $('#shopDetail').css('display','block');
+                $('.myShopName').text(info.data.shopName);
                 // 调用模板引擎处理店铺详情
                 var shopsDetailHtml = template("myShopDetail",info.data);
                 $(".content").html(shopsDetailHtml);
+                $('.back').on('click',function () {
+                    $('#shops').css('display','block');
+                    $('#shopDetail').css('display','none');
+                });
             }
         })
+    });
+    $('.freshen').on('click',function () {
+        window.location.reload();
     })
+
+    // 上移下移
+    $(function(){
+        //上移
+        $('#shopList').on('click','.up',function () {
+            var $tr = $(this).parents("tr");
+            if ($tr.index() != 0) {
+                $tr.fadeOut().fadeIn();
+                $tr.prev().before($tr);
+            }
+        });
+        //下移
+        $('#shopList').on('click','.down',function () {
+            var $tr = $(this).parents("tr");
+            if ($tr.index() != 6) {
+                $tr.fadeOut().fadeIn();
+                $tr.next().after($tr);
+            }
+        });
+    });
+
 })
