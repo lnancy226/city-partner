@@ -51,6 +51,7 @@ $(function () {
                     $.cookie('province',info.data.info.provinceName);
                     $.cookie('city',info.data.info.cityName);
                     $.cookie('cityId',info.data.info.cityId);
+                    $.cookie('provinceId',info.data.info.provinceId);
                     // console.log($.cookie("Authorization"), "cookie");
                     window.location.href = "./adminCenter.html";
                 }else{

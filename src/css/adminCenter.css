@@ -71,7 +71,7 @@ header .selectCity {
   margin-right: 20px;
   padding: 0 15px 0 25px;
 }
-header #curio option {
+header .form-group option {
   background-color: #7287a8;
 }
 #wrapper {

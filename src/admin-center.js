@@ -6,22 +6,56 @@ $(function () {
     var Authorization =  $.cookie("Authorization");
     // var Authorization = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5NTgyNTgyMDgyMTA4MDg4MzIiLCJleHAiOjE1MTg2MDQ0NzN9.xbg-ePqBk7PFXgQOn0A0aju_weBLeU-ZZJtHO3qRHzr44CxbizpRCEFAvvUjPwBCVRmGEfav0tzBfmnBxlbA3Q';
     console.log(Authorization,'token');
-    var cityId = $.cookie('cityId');
+    var provinceId = $.cookie('provinceId');
+    // var cityId = $.cookie('cityId');
     // 店铺列表类型-推荐/全部
-    // console.log(recommend,"recommend");
+    console.log(provinceId,"provinceId");
 
     // 目标城市
     $('.selectedP').text($.cookie('province'));
-    $('.selectedC').text($.cookie('city'));
+    // $('.selectedC').text($.cookie('city'));
     // 面包屑导航
     $('#province').html($.cookie('province')+"<span>-</span>");
     $('#city').html($.cookie('city')+"<span>-</span>");
+    requestCity(provinceId);
+    function requestCity(provinceId) {
+        var data  = JSON.stringify({
+            level:1,
+            parentId:provinceId
+        });
+
+        $.ajax({
+            url: 'http://120.27.226.156:8080/roo-mobile-web/cnarea/read/list',
+            beforeSend: function (request) {
+                request.setRequestHeader("Authorization", Authorization);
+            },
+            type: 'PUT',
+            contentType: "application/json;charset=utf-8",
+            data: data,
+            success: function (info) {
+
+                console.log(info,"获取城市");
+                $.each(info.data,function(index,value){
+                    $("#manageCity").append("<option value=" + value.id + ">" + value.shortName + "</option>");    //取到所有一级宝贝标签并将其导入到select中
+                });
+                getAntique(info.data[0].id);
+                //
+                // 当城市标签更改的时候调取到相应古玩城的数据
+                $("#manageCity").change(function () {
+                    var cityId = $(this).find("option:selected").val();
+                    $("#curio").find("option").remove();
+                    getAntique(cityId);
+                });
+            }
+        });
+    };
 
     // 获取古玩城
-    getAntique();
+    // getAntique();
     // 获取古玩城
-    function getAntique() {
-        console.log(cityId,"cityId");
+    function getAntique(cityId) {
+        var cityId = cityId;
+        console.log(cityId,'古玩城cityid');
         $.ajax({
             url:"http://120.27.226.156:8080/roo-mobile-web/curiocity/city/"+cityId,
             type:"GET",
@@ -43,7 +77,7 @@ $(function () {
                 $.each(info.data,function(index,value){
                     $("#curio").append("<option value=" + value.id + ">" + value.curiocityName + "</option>");
                 });
-                requestShopData(curioId);
+                requestShopData(cityId,curioId);
                 // 古玩城更改时获取相应店铺数据
                 $("#curio").change(function () {
                     curioId = $(this).find("option:selected").val();
@@ -51,7 +85,7 @@ $(function () {
                     $('#market').html(curiocityName);
                     // console.log(curioId,'古玩城id222');
                     // $("#shopList").remove();
-                    requestShopData(curioId);
+                    requestShopData(cityId,curioId);
                 });
 
                 $('#market').html(curiocityName);
@@ -60,7 +94,8 @@ $(function () {
     };
 
     // 获取古玩城下店铺列表
-    function requestShopData(curiocityId){
+    function requestShopData(cityId,curiocityId){
+        var cityId = cityId;
         var curiocityId = curiocityId;
         var recommoned =  $.cookie('recommoned');
         // 利用正则匹配页码
